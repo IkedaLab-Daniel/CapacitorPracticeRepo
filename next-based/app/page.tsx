@@ -1,3 +1,5 @@
+import Image from 'next/image';
+
 import { cookies } from 'next/headers';
 
 import { loginAction, logoutAction, registerAction } from './actions';
@@ -175,6 +177,17 @@ export default async function Page({ searchParams }: { searchParams?: PageSearch
                   <h2 className="text-lg font-semibold tracking-tight text-white">Signed in</h2>
                   <p className="text-sm leading-6 text-slate-300">Clear the cookie and call the Djoser logout endpoint.</p>
                 </div>
+
+                <div className='w-full flex justify-center my-2'>
+                  <Image
+                    src="https://media.tenor.com/jaX_i8ry6AQAAAAj/enterprise-confused.gif"
+                    width={500}
+                    height={500}
+                    alt='entrepise'
+                    className='w-50'
+                  />
+                </div>
+
 
                 <button
                   type="submit"
