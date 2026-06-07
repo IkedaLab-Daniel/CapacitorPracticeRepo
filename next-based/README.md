@@ -29,6 +29,22 @@ To learn more about Next.js, take a look at the following resources:
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
+## Django wiring
+
+This app talks to the Django backend through server actions, so the browser never calls the API directly.
+
+Set the backend URL before running the frontend:
+
+```bash
+export DJANGO_API_URL=http://127.0.0.1:8000
+```
+
+The page uses these endpoints:
+
+- `POST /auth/users/` for registration
+- `POST /auth/token/login/` for login
+- `POST /auth/token/logout/` for sign out
+
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
