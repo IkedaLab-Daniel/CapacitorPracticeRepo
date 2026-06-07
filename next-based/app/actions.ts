@@ -20,7 +20,7 @@ function readFormValue(formData: FormData, fieldName: string) {
   return String(formData.get(fieldName) ?? '').trim();
 }
 
-function extractErrorMessage(payload: unknown, fallback: string) {
+function extractErrorMessage(payload: unknown, fallback: string): string {
   if (!payload || typeof payload !== 'object') {
     return fallback;
   }
@@ -31,7 +31,10 @@ function extractErrorMessage(payload: unknown, fallback: string) {
     }
 
     if (Array.isArray(value)) {
-      const firstMessage = value.find((item): item is string => typeof item === 'string' && item.trim().length > 0);
+      const firstMessage = value.find(
+        (item): item is string =>
+          typeof item === 'string' && item.trim().length > 0
+      );
 
       if (firstMessage) {
         return firstMessage;
