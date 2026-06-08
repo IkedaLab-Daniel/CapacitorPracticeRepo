@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">XiaoBaiAI</string>
+    <string name="title_activity_main">XiaoBaiAI</string>
+    <string name="package_name">com.xiaobai.ai</string>
+    <string name="custom_url_scheme">com.xiaobai.ai</string>
+</resources>

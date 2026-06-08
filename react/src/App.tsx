@@ -12,8 +12,11 @@ const App: React.FC = () => {
     error: modelError,
     currentModel,
     availableModels,
+    nativeFiles,
     loadModelFromFile,
     loadStoredModel,
+    loadNativeModel,
+    refreshNativeFiles,
   } = useModel();
 
   const {
@@ -34,12 +37,20 @@ const App: React.FC = () => {
         <ModelLoader
           onFileSelect={loadModelFromFile}
           onModelSelect={loadStoredModel}
+          onNativeSelect={loadNativeModel}
           availableModels={availableModels}
+          nativeFiles={nativeFiles}
           currentModel={currentModel}
           loading={modelLoading}
           progress={modelProgress}
           error={modelError}
         />
+
+        {nativeFiles.length > 0 && (
+          <button className="button secondary" onClick={refreshNativeFiles} style={{ marginBottom: '1rem' }}>
+            Refresh Native Files
+          </button>
+        )}
 
         <ChatWindow
           messages={messages}

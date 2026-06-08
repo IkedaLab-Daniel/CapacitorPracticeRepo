@@ -4,7 +4,9 @@ import { type ModelMetadata } from '../services/storage';
 interface ModelLoaderProps {
   onFileSelect: (file: File) => void;
   onModelSelect: (metadata: ModelMetadata) => void;
+  onNativeSelect: (fileName: string) => void;
   availableModels: ModelMetadata[];
+  nativeFiles: string[];
   currentModel: ModelMetadata | null;
   loading: boolean;
   progress: number;
@@ -14,7 +16,9 @@ interface ModelLoaderProps {
 export const ModelLoader: React.FC<ModelLoaderProps> = ({
   onFileSelect,
   onModelSelect,
+  onNativeSelect,
   availableModels,
+  nativeFiles,
   currentModel,
   loading,
   progress,
@@ -38,9 +42,28 @@ export const ModelLoader: React.FC<ModelLoaderProps> = ({
         </label>
       </div>
 
+      {nativeFiles.length > 0 && (
+        <div className="native-models">
+          <h4>Files in Documents Folder</h4>
+          <ul>
+            {nativeFiles.map((fileName) => (
+              <li key={fileName}>
+                <button 
+                  className={`model-item ${currentModel?.fileName === fileName ? 'active' : ''}`}
+                  onClick={() => onNativeSelect(fileName)}
+                  disabled={loading}
+                >
+                  {fileName}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
+
       {availableModels.length > 0 && (
         <div className="stored-models">
-          <h4>Stored Models</h4>
+          <h4>History</h4>
           <ul>
             {availableModels.map((m) => (
               <li key={m.fileName}>
